@@ -14,7 +14,7 @@ const Nav = () => {
   useEffect(() => {
     const setProvider = async () => {
       const response = await getProviders();
-      console.log(response, "the providers reponse");
+
       setProviders(response);
     };
 
@@ -94,7 +94,7 @@ const Nav = () => {
                   My Profile
                 </Link>
                 <Link
-                  href="/create_prompt"
+                  href="/create-prompt"
                   className="dropdown_link"
                   onClick={() => settoggleDropdown(false)}
                 >

@@ -19,7 +19,7 @@ const handler = NextAuth({
         email: session?.user?.email,
       });
 
-      sessionUser.id = session?._id?.toString();
+      session.user.id = sessionUser._id?.toString();
 
       return session;
     },
@@ -27,13 +27,13 @@ const handler = NextAuth({
       try {
         await connectToDb();
 
-        const userExists = await User.findOne({ email: profile.email });
+        const userExists = await User.findOne({ email: profile?.email });
 
         if (!userExists) {
           await User.create({
-            email: profile.email,
-            username: profile.name?.replace(" ", "").toLowerCase(),
-            image: profile.picture,
+            email: profile?.email,
+            username: profile?.name?.replace(" ", "").toLowerCase(),
+            image: profile?.picture,
           });
         }
 
